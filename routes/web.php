@@ -26,6 +26,7 @@ use App\Http\Controllers\CategoryController;
     use App\Http\Controllers\CourseController;
     use App\Http\Controllers\CorrectionController;
     use App\Http\Controllers\TypeController; // Import the TypeController
+    use App\Http\Controllers\SubjectController; // Import the SubjectController
 
 
     // ... other routes
@@ -37,13 +38,37 @@ use App\Http\Controllers\CategoryController;
          Route::resource('courses', CourseController::class);
         Route::resource('corrections', CorrectionController::class);
          Route::resource('types', TypeController::class);
+           Route::resource('subjects', SubjectController::class);
        
     });
 
 
     use App\Http\Controllers\Admin\ReportDashboardController;
-  Route::middleware(['auth', 'can:access-admin-dashboard'])->prefix('admin')->name('admin.')->group(function () {
+  Route::middleware(['auth', ])->prefix('admin')->name('admin.')->group(function () {
         // ... existing admin routes
         Route::get('/reports', [ReportDashboardController::class, 'index'])->name('reports.index');
     });
 
+     use App\Http\Controllers\Admin\CorrectionDashboardController;
+
+/*  Route::middleware(['auth', 'can:access-admin-dashboard'])->prefix('admin')->name('admin.')->group(function () {
+        Route::get('/corrections', [CorrectionDashboardController::class, 'index'])->name('corrections.index');
+    }); */
+    Route::middleware(['auth', ])->prefix('admin')->name('admin.')->group(function () {
+        Route::get('/corrections', [CorrectionDashboardController::class, 'index'])->name('corrections.index');
+    });
+
+
+   
+
+ use App\Http\Controllers\UserController;
+
+
+Route::middleware(['auth', ])->group(function () {
+    Route::resource('users', UserController::class); // You'd need to scaffold UserController too
+});
+
+
+/* Route::middleware(['auth', 'admin'])->group(function () {
+    Route::get('/users', [App\Http\Controllers\UserControllerUserController::class, 'index']);
+}); */

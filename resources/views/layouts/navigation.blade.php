@@ -41,17 +41,34 @@
          class="absolute z-50 mt-2 w-48 rounded-md shadow-lg bg-white ring-1 ring-black ring-opacity-5"
          @click.away="open = false">
         <div class="py-1">
+            <a href="{{ url('admin/corrections') }}" 
+               class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 transition duration-150 ease-in-out {{ request()->routeIs('classifications.*') ? 'bg-gray-100 text-gray-900' : '' }}">
+                {{ __('Data Correction') }}
+            </a>
+            <a href="{{ url('admin/reports') }}" 
+               class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 transition duration-150 ease-in-out {{ request()->routeIs('classifications.*') ? 'bg-gray-100 text-gray-900' : '' }}">
+                {{ __('Report') }}
+            </a>
+              <a href="{{ route('users.index') }}" 
+               class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 transition duration-150 ease-in-out {{ request()->routeIs('users.*') ? 'bg-gray-100 text-gray-900' : '' }}">
+                {{ __('Users') }}
+            </a>
             <a href="{{ url('categories') }}" 
                class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 transition duration-150 ease-in-out {{ request()->routeIs('categories.*') ? 'bg-gray-100 text-gray-900' : '' }}">
                 {{ __('Category') }}
             </a>
+           
             <a href="{{ url('classifications') }}" 
                class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 transition duration-150 ease-in-out {{ request()->routeIs('classifications.*') ? 'bg-gray-100 text-gray-900' : '' }}">
                 {{ __('Classification') }}
             </a>
             <a href="{{ url('types') }}" 
-               class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 transition duration-150 ease-in-out {{ request()->routeIs('classifications.*') ? 'bg-gray-100 text-gray-900' : '' }}">
+               class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 transition duration-150 ease-in-out {{ request()->routeIs('types.*') ? 'bg-gray-100 text-gray-900' : '' }}">
                 {{ __('types') }}
+            </a>
+            <a href="{{ url('subjects') }}" 
+               class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 transition duration-150 ease-in-out {{ request()->routeIs('subjects.*') ? 'bg-gray-100 text-gray-900' : '' }}">
+                {{ __('Subjects') }}
             </a>
         </div>
     </div>
