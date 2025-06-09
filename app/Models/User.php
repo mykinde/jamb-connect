@@ -7,8 +7,8 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 
-use Illuminate\Database\Eloquent\Relations\HasMany;// * Import the HasMany relation with correction models
-
+use Illuminate\Database\Eloquent\Relations\HasMany; // * Import the HasMany relation with 
+use Illuminate\Database\Eloquent\Relations\HasOne; // Add this import
 
 class User extends Authenticatable
 {
@@ -54,6 +54,16 @@ class User extends Authenticatable
      public function corrections(): HasMany
     {
         return $this->hasMany(Correction::class);
+    }
+
+    public function uploads(): HasMany
+    {
+        return $this->hasMany(Upload::class);
+    }
+
+     public function account(): HasOne
+    {
+        return $this->hasOne(Account::class);
     }
 
 }

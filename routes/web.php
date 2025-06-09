@@ -50,13 +50,23 @@ use App\Http\Controllers\CategoryController;
     });
 
      use App\Http\Controllers\Admin\CorrectionDashboardController;
-
+use App\Http\Controllers\Admin\UploadDashboardController;
+use App\Http\Controllers\Admin\UserUploadsController; // 
 /*  Route::middleware(['auth', 'can:access-admin-dashboard'])->prefix('admin')->name('admin.')->group(function () {
         Route::get('/corrections', [CorrectionDashboardController::class, 'index'])->name('corrections.index');
     }); */
     Route::middleware(['auth', ])->prefix('admin')->name('admin.')->group(function () {
         Route::get('/corrections', [CorrectionDashboardController::class, 'index'])->name('corrections.index');
     });
+    Route::middleware(['auth', ])->prefix('admin')->name('admin.')->group(function () {
+        Route::get('/uploads-dashboard', [UploadDashboardController::class, 'index'])->name('uploads.dashboard');
+    });
+Route::middleware(['auth', ])->prefix('admin')->name('admin.')->group(function () {
+    Route::get('/user-uploads', [UserUploadsController::class, 'index'])->name('user_uploads.index'); // List all users
+        Route::get('/user-uploads/{user}', [UserUploadsController::class, 'show'])->name('user_uploads.show'); // Show uploads for a specific user
+
+    });
+
 
 
    
@@ -72,3 +82,18 @@ Route::middleware(['auth', ])->group(function () {
 /* Route::middleware(['auth', 'admin'])->group(function () {
     Route::get('/users', [App\Http\Controllers\UserControllerUserController::class, 'index']);
 }); */
+
+use App\Http\Controllers\UploadController; // Import the UploadController
+
+Route::middleware(['auth'])->group(function () {
+    // Uploads Routes
+    Route::resource('uploads', UploadController::class);
+});
+
+use App\Http\Controllers\AccountController; 
+Route::middleware(['auth'])->group(function () {
+    // Accounts Routes
+    Route::resource('accounts', AccountController::class);
+
+});
+

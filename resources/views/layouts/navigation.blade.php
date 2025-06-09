@@ -43,11 +43,21 @@
         <div class="py-1">
             <a href="{{ url('admin/corrections') }}" 
                class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 transition duration-150 ease-in-out {{ request()->routeIs('classifications.*') ? 'bg-gray-100 text-gray-900' : '' }}">
-                {{ __('Data Correction') }}
+                {{ __('Data Correction BD') }}
             </a>
             <a href="{{ url('admin/reports') }}" 
-               class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 transition duration-150 ease-in-out {{ request()->routeIs('classifications.*') ? 'bg-gray-100 text-gray-900' : '' }}">
-                {{ __('Report') }}
+               class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 transition duration-150 ease-in-out {{ request()->routeIs('reports.*') ? 'bg-gray-100 text-gray-900' : '' }}">
+                {{ __('Report DB') }}
+            </a>
+
+            <a href="{{ url('admin/user-uploads') }}" 
+               class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 transition duration-150 ease-in-out {{ request()->routeIs('uploads.dashboard.*') ? 'bg-gray-100 text-gray-900' : '' }}">
+                {{ __(' User Updload') }}
+            </a>
+            
+            <a href="{{ url('admin/uploads-dashboard') }}" 
+               class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 transition duration-150 ease-in-out {{ request()->routeIs('uploads.dashboard.*') ? 'bg-gray-100 text-gray-900' : '' }}">
+                {{ __('Updload DB') }}
             </a>
               <a href="{{ route('users.index') }}" 
                class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 transition duration-150 ease-in-out {{ request()->routeIs('users.*') ? 'bg-gray-100 text-gray-900' : '' }}">
@@ -81,8 +91,14 @@
                      <x-nav-link :href="url('courses')" :active="request()->routeIs('courses.*')">
                     {{ __('Course') }}
                     </x-nav-link>
-                    <x-nav-link :href="url('corrections')" :active="request()->routeIs('correction.*')">
+                    <x-nav-link :href="url('corrections')" :active="request()->routeIs('corrections.*')">
                     {{ __('Correction') }}
+                    </x-nav-link>
+                     <x-nav-link :href="url('uploads')" :active="request()->routeIs('uploads.*')">
+                    {{ __('Uploads') }}
+                    </x-nav-link>
+                    <x-nav-link :href="url('accounts')" :active="request()->routeIs('accounts.*')">
+                    {{ __('Accounts') }}
                     </x-nav-link>
                 </div>
             </div>
