@@ -50,6 +50,7 @@ use App\Http\Controllers\CategoryController;
     });
 
      use App\Http\Controllers\Admin\CorrectionDashboardController;
+     use App\Http\Controllers\Admin\AccountDashboardController; 
 use App\Http\Controllers\Admin\UploadDashboardController;
 use App\Http\Controllers\Admin\UserUploadsController; // 
 /*  Route::middleware(['auth', 'can:access-admin-dashboard'])->prefix('admin')->name('admin.')->group(function () {
@@ -65,6 +66,11 @@ Route::middleware(['auth', ])->prefix('admin')->name('admin.')->group(function (
     Route::get('/user-uploads', [UserUploadsController::class, 'index'])->name('user_uploads.index'); // List all users
         Route::get('/user-uploads/{user}', [UserUploadsController::class, 'show'])->name('user_uploads.show'); // Show uploads for a specific user
 
+    });
+
+     Route::prefix('admin')->name('admin.')->group(function () {
+         // New Admin Accounts Dashboard Route
+        Route::get('/accounts-dashboard', [AccountDashboardController::class, 'index'])->name('accounts.dashboard');
     });
 
 

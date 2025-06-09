@@ -30,7 +30,7 @@
             </svg>
         </div>
     </button>
-                    <!-- Dropdown Menu -->
+              <!-- Dropdown Menu -->
     <div x-show="open" 
          x-transition:enter="transition ease-out duration-200"
          x-transition:enter-start="transform opacity-0 scale-95"
@@ -40,7 +40,13 @@
          x-transition:leave-end="transform opacity-0 scale-95"
          class="absolute z-50 mt-2 w-48 rounded-md shadow-lg bg-white ring-1 ring-black ring-opacity-5"
          @click.away="open = false">
+
+         
+             
+
         <div class="py-1">
+
+         @if(auth()->user()->role == 'admin')     
             <a href="{{ url('admin/corrections') }}" 
                class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 transition duration-150 ease-in-out {{ request()->routeIs('classifications.*') ? 'bg-gray-100 text-gray-900' : '' }}">
                 {{ __('Data Correction BD') }}
@@ -54,6 +60,12 @@
                class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 transition duration-150 ease-in-out {{ request()->routeIs('uploads.dashboard.*') ? 'bg-gray-100 text-gray-900' : '' }}">
                 {{ __(' User Updload') }}
             </a>
+
+               <a href="{{ url('admin/accounts-dashboard') }}" 
+               class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 transition duration-150 ease-in-out {{ request()->routeIs('reports.*') ? 'bg-gray-100 text-gray-900' : '' }}">
+                {{ __('Account DB') }}
+            </a>
+
             
             <a href="{{ url('admin/uploads-dashboard') }}" 
                class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 transition duration-150 ease-in-out {{ request()->routeIs('uploads.dashboard.*') ? 'bg-gray-100 text-gray-900' : '' }}">
@@ -80,10 +92,11 @@
                class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 transition duration-150 ease-in-out {{ request()->routeIs('subjects.*') ? 'bg-gray-100 text-gray-900' : '' }}">
                 {{ __('Subjects') }}
             </a>
+              @endif    
         </div>
     </div>
     </div>
-                   
+             
                     <x-nav-link :href="route('institutions.index')" :active="request()->routeIs('institutions.*')">
                     {{ __('Institution') }}
                     </x-nav-link>

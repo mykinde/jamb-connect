@@ -32,5 +32,9 @@
                 {{ $slot }}
             </main>
         </div>
+       <footer class="text-center py-4 text-sm text-gray-600">
+    &copy; {{ date('Y') }} G3 Technologies. All rights reserved.<br/>
+    Join our WhatsApp <a href="https://whatsapp.com/channel/0029Vb63Fmi3GJOxv9yG2u2f" class="link-card" target="_blank"> Channel here </a>
+</footer>
     </body>
 </html>
